@@ -292,6 +292,15 @@
 					
 				</cfcase>
 				
+				<cfcase value="integer">
+				
+					<!--- Set numeric value. --->
+					<cfset VARIABLES.Cell.SetCellValue( 
+						JavaCast( "int", THISTAG.GeneratedContent )
+						) />
+					
+				</cfcase>
+				
 				<cfcase value="numeric">
 				
 					<!--- Set numeric value. --->
