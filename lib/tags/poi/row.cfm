@@ -118,7 +118,7 @@
 		<!--- Get the row height property to see if has been set. --->
 		<cfif (
 			StructKeyExists( VARIABLES.Style, "height" ) AND
-			Val( VARIABLES.RowHeight )
+			Val( VARIABLES.Style[ "height" ] )
 			)>
 		
 			<!--- Set row height in points. --->

@@ -49,6 +49,12 @@
 			type="string"
 			default="0.00"
 			/>
+		
+		<cfparam
+		   name="ATTRIBUTES.PercentageFormat"
+		   type="string"
+		   default="0.00%"
+		   />
 			
 		<!--- Default date format mask. --->
 		<cfparam
@@ -415,6 +421,14 @@
 							)
 						) />
 					
+				</cfcase>
+				<cfcase value="Percentage">
+				    <!--- Use the Percentage formatting. --->
+				    <cfset VARIABLES.CellStyle.SetDataFormat(
+				    VARIABLES.DocumentTag.DataFormat.GetBuiltinFormat(
+					    JavaCast( "string", ATTRIBUTES.PercentageFormat )
+					    )
+				    ) />
 				</cfcase>
 				<cfcase value="numeric">
 				

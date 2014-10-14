@@ -54,6 +54,7 @@
 	<cfset VARIABLES.CSS[ "white-space" ] = "" />
 	<cfset VARIABLES.CSS[ "width" ] = "" />
 	<cfset VARIABLES.CSS[ "z-index" ] = "" />
+	<cfset VARIABLES.CSS[ "rotate" ] = "" />
 	
 	<!--- 
 		Set up the validation rules for the CSS properties. Each
@@ -108,6 +109,7 @@
 	<cfset VARIABLES.CSSValidation[ "white-space" ] = "normal|pre|nowrap" />
 	<cfset VARIABLES.CSSValidation[ "width" ] = "\d+(\.\d+)?(px|pt|em|%)|auto" />
 	<cfset VARIABLES.CSSValidation[ "z-index" ] = "\d+" />
+	<cfset VARIABLES.CSSValidation[ "rotate" ] = "\d+" />
 	
 	
 	<!--- Here is an array of the alpha-sorted keys. --->
@@ -445,6 +447,20 @@
 			<cfset ARGUMENTS.CellStyle.SetFillPattern( ARGUMENTS.CellStyle.NO_FILL ) />
 			
 		</cfif>
+		
+		<!--- 
+			Check to see if we have an appropriate rotation
+		--->
+		<cfif (
+			Len( LOCAL.PropertyMap[ "rotate" ] ) AND isNumeric(LOCAL.PropertyMap[ "rotate" ])
+			)>
+			
+			<cfset ARGUMENTS.CellStyle.SetRotation(
+					LOCAL.PropertyMap[ "rotate" ]
+				) />
+			
+		</cfif>
+		
 		
 		
 		<!--- Loop over the four border directions. --->
